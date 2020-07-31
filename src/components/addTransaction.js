@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/globalState";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState();
+  const addNotification = () => toast("Transaction has been added");
 
   const { addTransaction } = useContext(GlobalContext);
 
@@ -42,7 +45,10 @@ export const AddTransaction = () => {
             placeholder="Enter amount here..."
           />
         </div>
-        <button className="btn">Add transaction</button>
+        <button className="btn" onClick={addNotification}>
+          Add transaction
+        </button>
+        <ToastContainer />
       </form>
     </div>
   );
